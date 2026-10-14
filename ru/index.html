@@ -50,48 +50,60 @@ a{color:inherit}
 h1{margin:0 0 20px;font:600 clamp(44px,6.5vw,72px)/1 var(--display);letter-spacing:-.045em;text-wrap:balance}
 .lead{margin:0;font-size:20px;color:var(--muted)}
 
-.doors{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,480px),1fr));gap:20px}
-.door{display:flex;flex-direction:column;justify-content:space-between;gap:32px;min-height:600px;padding:32px;border-radius:18px;text-decoration:none;overflow:hidden;transition:transform .25s}
-.door:hover{transform:translateY(-4px)}
-.door-head{display:flex;flex-direction:column;gap:10px}
-.door-head b{font:600 40px/1.05 var(--display);letter-spacing:-.03em}
-.door-head span{font-size:17px;max-width:26em}
+.next{margin-top:20px;padding:24px 32px;border-radius:18px;border:1.5px dashed #B9BBC0;color:var(--muted)}
+footer{margin-top:72px;border-top:1px solid var(--line);padding:28px 0 44px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:14px;color:var(--muted)}
+footer nav{display:flex;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none}
+footer a:hover{color:var(--ink)}
+
+
+:root{--night:#0D0B08;--night-ink:#F6EEE2;--night-muted:#A8977F;--amber:#FFB347;--amber-dim:rgba(255,179,71,.28);--ring:#2B2620}
+.doors{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:20px}
+.door{display:flex;flex-direction:column;gap:28px;padding:32px;border-radius:18px;text-decoration:none;overflow:hidden;position:relative;isolation:isolate}
+.door-head{display:flex;gap:18px;align-items:flex-start}
+.door-head img{flex:0 0 auto;width:64px;height:64px;border-radius:15px;box-shadow:0 0 0 1px rgba(255,255,255,.14)}
+.door-head span{display:flex;flex-direction:column;gap:6px;min-width:0}
+.door-head b{font:600 34px/1.05 var(--display);letter-spacing:-.03em}
+.door-head small{font-size:16px;max-width:30em}
+.art{flex:1;display:flex;align-items:center;justify-content:center;padding:8px 0}
 .door-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .door-foot>span:first-child{display:flex;flex-direction:column;min-width:0}
 .door-foot b{font-weight:700;overflow-wrap:anywhere}
 .door-foot small{font-size:14px}
 .pill{display:inline-flex;align-items:center;min-height:46px;padding:12px 22px;border-radius:999px;font-weight:700;font-size:15px}
 
-.art{display:flex;align-items:center;justify-content:center;gap:8%;width:100%}
-.app-tile{display:flex;flex-direction:column;align-items:center;gap:12px;font:600 15px/1 var(--display)}
-.app-tile img{width:96px;height:96px;border-radius:22px;box-shadow:0 0 0 1px rgba(255,255,255,.14)}
-
-/* Tendroll — фиолетовая дверь, как блок «Приложения» на главной */
 .tendroll{background:var(--violet-deep);color:var(--violet-ink)}
-.tendroll .door-head span,.tendroll small{color:var(--violet-muted)}
+.tendroll small{color:var(--violet-muted)}
 .tendroll .pill{background:var(--violet-ink);color:var(--violet-deep)}
-.phone{display:block;flex:0 0 38%;max-width:200px;aspect-ratio:9/19.5;padding:3.5%;border-radius:18%/8.3%;background:#0E0A1C;box-shadow:0 0 0 1px rgba(255,255,255,.12),0 30px 60px -28px rgba(0,0,0,.8)}
-.phone img{width:100%;height:100%;object-fit:cover;object-position:top;border-radius:15%/7%}
+.tendroll::before{content:"";position:absolute;inset:auto -20% -30% -20%;height:70%;background:radial-gradient(closest-side,rgba(140,100,255,.35),transparent);z-index:-1}
 
-/* Hourfield — ночная синяя дверь; iPhone лёжа на подставке, экран из часов */
-.hourfield{background:var(--navy);color:var(--navy-ink)}
-.hourfield .door-head span,.hourfield small{color:var(--navy-muted)}
-.hourfield .pill{background:var(--navy-ink);color:var(--navy)}
-.landscape{display:block;flex:0 1 62%;max-width:360px;min-width:0}
-.landscape .bezel{display:block;aspect-ratio:19.5/9;padding:3.2% 4%;border-radius:9%/19%;background:#05080F;box-shadow:0 0 0 1px rgba(255,255,255,.12),0 30px 60px -28px rgba(0,0,0,.9)}
-.clocks{display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(3,1fr);gap:4%;width:100%;height:100%;align-content:center}
-.clocks i{position:relative;display:block;aspect-ratio:1;border-radius:50%;background:#101A30;box-shadow:inset 0 0 0 1px rgba(147,160,188,.28)}
-.clocks i::before,.clocks i::after{content:"";position:absolute;left:calc(50% - 1px);bottom:50%;width:2px;border-radius:2px;background:var(--chalk);transform-origin:50% 100%;transform:rotate(var(--a))}
-.clocks i::before{height:46%;animation:turn 9s linear infinite;animation-delay:var(--d)}
-.clocks i::after{height:46%;--a:var(--b);animation:turn 9s linear infinite reverse;animation-delay:var(--d)}
-@keyframes turn{from{transform:rotate(var(--a))}to{transform:rotate(calc(var(--a) + 360deg))}}
-.stand-h{display:block;width:30%;height:14px;margin:0 auto;background:#1B2438;clip-path:polygon(22% 0,78% 0,100% 100%,0 100%)}
+.hourfield{background:var(--night);color:var(--night-ink)}
+.hourfield small{color:var(--night-muted)}
+.hourfield .pill{background:var(--amber);color:var(--night)}
+.hourfield::before{content:"";position:absolute;inset:auto -20% -30% -20%;height:70%;background:radial-gradient(closest-side,rgba(255,170,60,.22),transparent);z-index:-1}
 
-.next{margin-top:20px;padding:24px 32px;border-radius:18px;border:1.5px dashed #B9BBC0;color:var(--muted)}
-footer{margin-top:72px;border-top:1px solid var(--line);padding:28px 0 44px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:14px;color:var(--muted)}
-footer nav{display:flex;gap:20px;flex-wrap:wrap}
-footer a{text-decoration:none}
-footer a:hover{color:var(--ink)}
+/* ── iPhone 17: тонкие ровные рамки, Dynamic Island, кнопки слева (Action, громкость) и справа (боковая, Camera Control) ── */
+.iphone{--f1:#DCD3F2;--f2:#9F94C4;position:relative;display:block;width:min(250px,58%);padding:1.2%;border-radius:16.2%/7.6%;
+  background:linear-gradient(140deg,var(--f1),var(--f2) 38%,var(--f1) 62%,var(--f2));
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.45),0 50px 80px -40px rgba(0,0,0,.9)}
+.iphone.mist{--f1:#D3DEEA;--f2:#8E9FB3}
+.iphone .glass{display:block;padding:3.3%;border-radius:15.4%/7.2%;background:#050505}
+.iphone .screen{position:relative;display:block;aspect-ratio:1206/2622;border-radius:12.4%/5.7%;overflow:hidden;background:#000}
+.iphone .screen img{width:100%;height:100%;object-fit:cover}
+.iphone .island{position:absolute;top:1.6%;left:50%;width:31%;aspect-ratio:3.35;border-radius:999px;background:#000;transform:translateX(-50%)}
+.iphone .btn{position:absolute;width:1.4%;border-radius:3px;background:linear-gradient(90deg,var(--f2),var(--f1))}
+.iphone .l{left:-1.1%}.iphone .r{right:-1.1%}
+.iphone .action{top:16%;height:4%}
+.iphone .vup{top:23.5%;height:7%}
+.iphone .vdn{top:32%;height:7%}
+.iphone .side{top:25%;height:10.5%}
+.iphone .cam{top:56%;height:5.5%;background:linear-gradient(90deg,#3c3c44,#6a6a74)}
+
+/* ── Поле часов: SVG со своим viewBox, поэтому никогда не выходит за карточку ── */
+.field{width:min(330px,100%);height:auto;display:block}
+.field .ring{fill:none;stroke:var(--ring);stroke-width:.55}
+.field .idle{stroke:var(--amber-dim);stroke-width:1.15;stroke-linecap:round}
+.field .digit{fill:none;stroke:var(--amber);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;transition:opacity .4s}
 
 @media (max-width:640px){
   .wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
@@ -102,15 +114,13 @@ footer a:hover{color:var(--ink)}
   h1{margin-bottom:14px}
   .lead{font-size:17px}
   .doors{gap:14px}
-  .door{min-height:0;padding:22px;gap:22px}
-  .door-head{gap:6px}
-  .door-head b{font-size:28px}
-  .door-head span{font-size:15px}
+  .door{padding:22px;gap:22px}
+  .door-head img{width:52px;height:52px;border-radius:12px}
+  .door-head b{font-size:26px}
+  .door-head small{font-size:15px}
   .door-foot b{font-size:15px}
   .door-foot small{font-size:13px}
   .pill{min-height:44px;padding:10px 18px;font-size:14px}
-  .app-tile img{width:72px;height:72px;border-radius:16px}
-  .stand-h{height:10px}
   .next{margin-top:14px;padding:20px 22px;font-size:15px}
   footer{margin-top:40px;flex-direction:column-reverse;gap:10px}
 }
@@ -135,20 +145,18 @@ footer a:hover{color:var(--ink)}
 
     <div class="doors">
       <a class="door tendroll" href="https://tendroll.vladislove.online/ru/">
-        <span class="door-head"><b>Tendroll</b><span>Разбор фотоплёнки по одному свайпу. Бесплатно, без рекламы и подписки.</span></span>
-        <span class="art" aria-hidden="true">
-          <span class="phone"><img src="https://vladislove.online/img/tendroll-shot.jpg" alt=""></span>
-          <span class="app-tile"><img src="/assets/tendroll-180.png" alt="">Tendroll</span>
-        </span>
+        <span class="door-head"><img src="/assets/tendroll-180.png" alt="" width="64" height="64"><span><b>Tendroll</b><small>Разбор фотоплёнки по одному свайпу. Бесплатно, без рекламы и подписки.</small></span></span>
+        <span class="art" aria-hidden="true"><span class="iphone">
+            <span class="btn l action"></span><span class="btn l vup"></span><span class="btn l vdn"></span>
+            <span class="btn r side"></span><span class="btn r cam"></span>
+            <span class="glass"><span class="screen"><img src="https://vladislove.online/img/tendroll-shot.jpg" alt="" width="644" height="1400"><span class="island"></span></span></span>
+          </span></span>
         <span class="door-foot"><span><b>tendroll.vladislove.online</b><small>Скоро в App Store</small></span><span class="pill">Подробнее</span></span>
       </a>
 
       <a class="door hourfield" href="https://hourfield.vladislove.online/ru/">
-        <span class="door-head"><b>Hourfield</b><span>Часы, собранные из часов, для стола и тумбочки. Бесплатно, без рекламы, не отвлекает.</span></span>
-        <span class="art" aria-hidden="true">
-          <span class="landscape"><span class="bezel"><span class="clocks"><i style="--a:135deg;--b:225deg;--d:0.00s"></i><i style="--a:45deg;--b:135deg;--d:-0.45s"></i><i style="--a:135deg;--b:225deg;--d:-0.90s"></i><i style="--a:45deg;--b:135deg;--d:-1.35s"></i><i style="--a:135deg;--b:225deg;--d:-1.80s"></i><i style="--a:45deg;--b:135deg;--d:-2.25s"></i><i style="--a:135deg;--b:225deg;--d:-2.70s"></i><i style="--a:45deg;--b:135deg;--d:-3.15s"></i><i style="--a:45deg;--b:135deg;--d:-0.45s"></i><i style="--a:135deg;--b:225deg;--d:-0.90s"></i><i style="--a:45deg;--b:135deg;--d:-1.35s"></i><i style="--a:135deg;--b:225deg;--d:-1.80s"></i><i style="--a:45deg;--b:135deg;--d:-2.25s"></i><i style="--a:135deg;--b:225deg;--d:-2.70s"></i><i style="--a:45deg;--b:135deg;--d:-3.15s"></i><i style="--a:135deg;--b:225deg;--d:-3.60s"></i><i style="--a:135deg;--b:225deg;--d:-0.90s"></i><i style="--a:45deg;--b:135deg;--d:-1.35s"></i><i style="--a:135deg;--b:225deg;--d:-1.80s"></i><i style="--a:45deg;--b:135deg;--d:-2.25s"></i><i style="--a:135deg;--b:225deg;--d:-2.70s"></i><i style="--a:45deg;--b:135deg;--d:-3.15s"></i><i style="--a:135deg;--b:225deg;--d:-3.60s"></i><i style="--a:45deg;--b:135deg;--d:-4.05s"></i></span></span><span class="stand-h"></span></span>
-          <span class="app-tile"><img src="/assets/hourfield-180.png" alt="">Hourfield</span>
-        </span>
+        <span class="door-head"><img src="/assets/hourfield-180.png" alt="" width="64" height="64"><span><b>Hourfield</b><small>Часы, собранные из часов, для стола и тумбочки. Бесплатно, без рекламы, не отвлекает.</small></span></span>
+        <span class="art" aria-hidden="true"><svg class="field" viewBox="0 0 110 130"><g id="hf-field"><circle class="ring" cx="5" cy="5" r="4.4"/><line class="idle" x1="3.1" y1="6.9" x2="6.9" y2="3.1"/><circle class="ring" cx="15" cy="5" r="4.4"/><line class="idle" x1="13.1" y1="6.9" x2="16.9" y2="3.1"/><circle class="ring" cx="25" cy="5" r="4.4"/><line class="idle" x1="23.1" y1="6.9" x2="26.9" y2="3.1"/><circle class="ring" cx="35" cy="5" r="4.4"/><line class="idle" x1="33.1" y1="6.9" x2="36.9" y2="3.1"/><circle class="ring" cx="45" cy="5" r="4.4"/><line class="idle" x1="43.1" y1="6.9" x2="46.9" y2="3.1"/><circle class="ring" cx="55" cy="5" r="4.4"/><line class="idle" x1="53.1" y1="6.9" x2="56.9" y2="3.1"/><circle class="ring" cx="65" cy="5" r="4.4"/><line class="idle" x1="63.1" y1="6.9" x2="66.9" y2="3.1"/><circle class="ring" cx="75" cy="5" r="4.4"/><line class="idle" x1="73.1" y1="6.9" x2="76.9" y2="3.1"/><circle class="ring" cx="85" cy="5" r="4.4"/><line class="idle" x1="83.1" y1="6.9" x2="86.9" y2="3.1"/><circle class="ring" cx="95" cy="5" r="4.4"/><line class="idle" x1="93.1" y1="6.9" x2="96.9" y2="3.1"/><circle class="ring" cx="105" cy="5" r="4.4"/><line class="idle" x1="103.1" y1="6.9" x2="106.9" y2="3.1"/><circle class="ring" cx="5" cy="15" r="4.4"/><line class="idle" x1="3.1" y1="16.9" x2="6.9" y2="13.1"/><circle class="ring" cx="15" cy="15" r="4.4"/><line class="idle" x1="13.1" y1="16.9" x2="16.9" y2="13.1"/><circle class="ring" cx="25" cy="15" r="4.4"/><line class="idle" x1="23.1" y1="16.9" x2="26.9" y2="13.1"/><circle class="ring" cx="35" cy="15" r="4.4"/><line class="idle" x1="33.1" y1="16.9" x2="36.9" y2="13.1"/><circle class="ring" cx="45" cy="15" r="4.4"/><line class="idle" x1="43.1" y1="16.9" x2="46.9" y2="13.1"/><circle class="ring" cx="55" cy="15" r="4.4"/><line class="idle" x1="53.1" y1="16.9" x2="56.9" y2="13.1"/><circle class="ring" cx="65" cy="15" r="4.4"/><line class="idle" x1="63.1" y1="16.9" x2="66.9" y2="13.1"/><circle class="ring" cx="75" cy="15" r="4.4"/><line class="idle" x1="73.1" y1="16.9" x2="76.9" y2="13.1"/><circle class="ring" cx="85" cy="15" r="4.4"/><line class="idle" x1="83.1" y1="16.9" x2="86.9" y2="13.1"/><circle class="ring" cx="95" cy="15" r="4.4"/><line class="idle" x1="93.1" y1="16.9" x2="96.9" y2="13.1"/><circle class="ring" cx="105" cy="15" r="4.4"/><line class="idle" x1="103.1" y1="16.9" x2="106.9" y2="13.1"/><circle class="ring" cx="5" cy="25" r="4.4"/><line class="idle" x1="3.1" y1="26.9" x2="6.9" y2="23.1"/><circle class="ring" cx="15" cy="25" r="4.4"/><line class="idle" x1="13.1" y1="26.9" x2="16.9" y2="23.1"/><circle class="ring" cx="25" cy="25" r="4.4"/><line class="idle" x1="23.1" y1="26.9" x2="26.9" y2="23.1"/><circle class="ring" cx="35" cy="25" r="4.4"/><line class="idle" x1="33.1" y1="26.9" x2="36.9" y2="23.1"/><circle class="ring" cx="45" cy="25" r="4.4"/><line class="idle" x1="43.1" y1="26.9" x2="46.9" y2="23.1"/><circle class="ring" cx="55" cy="25" r="4.4"/><line class="idle" x1="53.1" y1="26.9" x2="56.9" y2="23.1"/><circle class="ring" cx="65" cy="25" r="4.4"/><line class="idle" x1="63.1" y1="26.9" x2="66.9" y2="23.1"/><circle class="ring" cx="75" cy="25" r="4.4"/><line class="idle" x1="73.1" y1="26.9" x2="76.9" y2="23.1"/><circle class="ring" cx="85" cy="25" r="4.4"/><line class="idle" x1="83.1" y1="26.9" x2="86.9" y2="23.1"/><circle class="ring" cx="95" cy="25" r="4.4"/><line class="idle" x1="93.1" y1="26.9" x2="96.9" y2="23.1"/><circle class="ring" cx="105" cy="25" r="4.4"/><line class="idle" x1="103.1" y1="26.9" x2="106.9" y2="23.1"/><circle class="ring" cx="5" cy="35" r="4.4"/><line class="idle" x1="3.1" y1="36.9" x2="6.9" y2="33.1"/><circle class="ring" cx="15" cy="35" r="4.4"/><line class="idle" x1="13.1" y1="36.9" x2="16.9" y2="33.1"/><circle class="ring" cx="25" cy="35" r="4.4"/><line class="idle" x1="23.1" y1="36.9" x2="26.9" y2="33.1"/><circle class="ring" cx="35" cy="35" r="4.4"/><line class="idle" x1="33.1" y1="36.9" x2="36.9" y2="33.1"/><circle class="ring" cx="45" cy="35" r="4.4"/><line class="idle" x1="43.1" y1="36.9" x2="46.9" y2="33.1"/><circle class="ring" cx="55" cy="35" r="4.4"/><line class="idle" x1="53.1" y1="36.9" x2="56.9" y2="33.1"/><circle class="ring" cx="65" cy="35" r="4.4"/><line class="idle" x1="63.1" y1="36.9" x2="66.9" y2="33.1"/><circle class="ring" cx="75" cy="35" r="4.4"/><line class="idle" x1="73.1" y1="36.9" x2="76.9" y2="33.1"/><circle class="ring" cx="85" cy="35" r="4.4"/><line class="idle" x1="83.1" y1="36.9" x2="86.9" y2="33.1"/><circle class="ring" cx="95" cy="35" r="4.4"/><line class="idle" x1="93.1" y1="36.9" x2="96.9" y2="33.1"/><circle class="ring" cx="105" cy="35" r="4.4"/><line class="idle" x1="103.1" y1="36.9" x2="106.9" y2="33.1"/><circle class="ring" cx="5" cy="45" r="4.4"/><line class="idle" x1="3.1" y1="46.9" x2="6.9" y2="43.1"/><circle class="ring" cx="15" cy="45" r="4.4"/><line class="idle" x1="13.1" y1="46.9" x2="16.9" y2="43.1"/><circle class="ring" cx="25" cy="45" r="4.4"/><line class="idle" x1="23.1" y1="46.9" x2="26.9" y2="43.1"/><circle class="ring" cx="35" cy="45" r="4.4"/><line class="idle" x1="33.1" y1="46.9" x2="36.9" y2="43.1"/><circle class="ring" cx="45" cy="45" r="4.4"/><line class="idle" x1="43.1" y1="46.9" x2="46.9" y2="43.1"/><circle class="ring" cx="55" cy="45" r="4.4"/><line class="idle" x1="53.1" y1="46.9" x2="56.9" y2="43.1"/><circle class="ring" cx="65" cy="45" r="4.4"/><line class="idle" x1="63.1" y1="46.9" x2="66.9" y2="43.1"/><circle class="ring" cx="75" cy="45" r="4.4"/><line class="idle" x1="73.1" y1="46.9" x2="76.9" y2="43.1"/><circle class="ring" cx="85" cy="45" r="4.4"/><line class="idle" x1="83.1" y1="46.9" x2="86.9" y2="43.1"/><circle class="ring" cx="95" cy="45" r="4.4"/><line class="idle" x1="93.1" y1="46.9" x2="96.9" y2="43.1"/><circle class="ring" cx="105" cy="45" r="4.4"/><line class="idle" x1="103.1" y1="46.9" x2="106.9" y2="43.1"/><circle class="ring" cx="5" cy="55" r="4.4"/><line class="idle" x1="3.1" y1="56.9" x2="6.9" y2="53.1"/><circle class="ring" cx="15" cy="55" r="4.4"/><line class="idle" x1="13.1" y1="56.9" x2="16.9" y2="53.1"/><circle class="ring" cx="25" cy="55" r="4.4"/><line class="idle" x1="23.1" y1="56.9" x2="26.9" y2="53.1"/><circle class="ring" cx="35" cy="55" r="4.4"/><line class="idle" x1="33.1" y1="56.9" x2="36.9" y2="53.1"/><circle class="ring" cx="45" cy="55" r="4.4"/><line class="idle" x1="43.1" y1="56.9" x2="46.9" y2="53.1"/><circle class="ring" cx="55" cy="55" r="4.4"/><line class="idle" x1="53.1" y1="56.9" x2="56.9" y2="53.1"/><circle class="ring" cx="65" cy="55" r="4.4"/><line class="idle" x1="63.1" y1="56.9" x2="66.9" y2="53.1"/><circle class="ring" cx="75" cy="55" r="4.4"/><line class="idle" x1="73.1" y1="56.9" x2="76.9" y2="53.1"/><circle class="ring" cx="85" cy="55" r="4.4"/><line class="idle" x1="83.1" y1="56.9" x2="86.9" y2="53.1"/><circle class="ring" cx="95" cy="55" r="4.4"/><line class="idle" x1="93.1" y1="56.9" x2="96.9" y2="53.1"/><circle class="ring" cx="105" cy="55" r="4.4"/><line class="idle" x1="103.1" y1="56.9" x2="106.9" y2="53.1"/><circle class="ring" cx="5" cy="65" r="4.4"/><line class="idle" x1="3.1" y1="66.9" x2="6.9" y2="63.1"/><circle class="ring" cx="15" cy="65" r="4.4"/><line class="idle" x1="13.1" y1="66.9" x2="16.9" y2="63.1"/><circle class="ring" cx="25" cy="65" r="4.4"/><line class="idle" x1="23.1" y1="66.9" x2="26.9" y2="63.1"/><circle class="ring" cx="35" cy="65" r="4.4"/><line class="idle" x1="33.1" y1="66.9" x2="36.9" y2="63.1"/><circle class="ring" cx="45" cy="65" r="4.4"/><line class="idle" x1="43.1" y1="66.9" x2="46.9" y2="63.1"/><circle class="ring" cx="55" cy="65" r="4.4"/><line class="idle" x1="53.1" y1="66.9" x2="56.9" y2="63.1"/><circle class="ring" cx="65" cy="65" r="4.4"/><line class="idle" x1="63.1" y1="66.9" x2="66.9" y2="63.1"/><circle class="ring" cx="75" cy="65" r="4.4"/><line class="idle" x1="73.1" y1="66.9" x2="76.9" y2="63.1"/><circle class="ring" cx="85" cy="65" r="4.4"/><line class="idle" x1="83.1" y1="66.9" x2="86.9" y2="63.1"/><circle class="ring" cx="95" cy="65" r="4.4"/><line class="idle" x1="93.1" y1="66.9" x2="96.9" y2="63.1"/><circle class="ring" cx="105" cy="65" r="4.4"/><line class="idle" x1="103.1" y1="66.9" x2="106.9" y2="63.1"/><circle class="ring" cx="5" cy="75" r="4.4"/><line class="idle" x1="3.1" y1="76.9" x2="6.9" y2="73.1"/><circle class="ring" cx="15" cy="75" r="4.4"/><line class="idle" x1="13.1" y1="76.9" x2="16.9" y2="73.1"/><circle class="ring" cx="25" cy="75" r="4.4"/><line class="idle" x1="23.1" y1="76.9" x2="26.9" y2="73.1"/><circle class="ring" cx="35" cy="75" r="4.4"/><line class="idle" x1="33.1" y1="76.9" x2="36.9" y2="73.1"/><circle class="ring" cx="45" cy="75" r="4.4"/><line class="idle" x1="43.1" y1="76.9" x2="46.9" y2="73.1"/><circle class="ring" cx="55" cy="75" r="4.4"/><line class="idle" x1="53.1" y1="76.9" x2="56.9" y2="73.1"/><circle class="ring" cx="65" cy="75" r="4.4"/><line class="idle" x1="63.1" y1="76.9" x2="66.9" y2="73.1"/><circle class="ring" cx="75" cy="75" r="4.4"/><line class="idle" x1="73.1" y1="76.9" x2="76.9" y2="73.1"/><circle class="ring" cx="85" cy="75" r="4.4"/><line class="idle" x1="83.1" y1="76.9" x2="86.9" y2="73.1"/><circle class="ring" cx="95" cy="75" r="4.4"/><line class="idle" x1="93.1" y1="76.9" x2="96.9" y2="73.1"/><circle class="ring" cx="105" cy="75" r="4.4"/><line class="idle" x1="103.1" y1="76.9" x2="106.9" y2="73.1"/><circle class="ring" cx="5" cy="85" r="4.4"/><line class="idle" x1="3.1" y1="86.9" x2="6.9" y2="83.1"/><circle class="ring" cx="15" cy="85" r="4.4"/><line class="idle" x1="13.1" y1="86.9" x2="16.9" y2="83.1"/><circle class="ring" cx="25" cy="85" r="4.4"/><line class="idle" x1="23.1" y1="86.9" x2="26.9" y2="83.1"/><circle class="ring" cx="35" cy="85" r="4.4"/><line class="idle" x1="33.1" y1="86.9" x2="36.9" y2="83.1"/><circle class="ring" cx="45" cy="85" r="4.4"/><line class="idle" x1="43.1" y1="86.9" x2="46.9" y2="83.1"/><circle class="ring" cx="55" cy="85" r="4.4"/><line class="idle" x1="53.1" y1="86.9" x2="56.9" y2="83.1"/><circle class="ring" cx="65" cy="85" r="4.4"/><line class="idle" x1="63.1" y1="86.9" x2="66.9" y2="83.1"/><circle class="ring" cx="75" cy="85" r="4.4"/><line class="idle" x1="73.1" y1="86.9" x2="76.9" y2="83.1"/><circle class="ring" cx="85" cy="85" r="4.4"/><line class="idle" x1="83.1" y1="86.9" x2="86.9" y2="83.1"/><circle class="ring" cx="95" cy="85" r="4.4"/><line class="idle" x1="93.1" y1="86.9" x2="96.9" y2="83.1"/><circle class="ring" cx="105" cy="85" r="4.4"/><line class="idle" x1="103.1" y1="86.9" x2="106.9" y2="83.1"/><circle class="ring" cx="5" cy="95" r="4.4"/><line class="idle" x1="3.1" y1="96.9" x2="6.9" y2="93.1"/><circle class="ring" cx="15" cy="95" r="4.4"/><line class="idle" x1="13.1" y1="96.9" x2="16.9" y2="93.1"/><circle class="ring" cx="25" cy="95" r="4.4"/><line class="idle" x1="23.1" y1="96.9" x2="26.9" y2="93.1"/><circle class="ring" cx="35" cy="95" r="4.4"/><line class="idle" x1="33.1" y1="96.9" x2="36.9" y2="93.1"/><circle class="ring" cx="45" cy="95" r="4.4"/><line class="idle" x1="43.1" y1="96.9" x2="46.9" y2="93.1"/><circle class="ring" cx="55" cy="95" r="4.4"/><line class="idle" x1="53.1" y1="96.9" x2="56.9" y2="93.1"/><circle class="ring" cx="65" cy="95" r="4.4"/><line class="idle" x1="63.1" y1="96.9" x2="66.9" y2="93.1"/><circle class="ring" cx="75" cy="95" r="4.4"/><line class="idle" x1="73.1" y1="96.9" x2="76.9" y2="93.1"/><circle class="ring" cx="85" cy="95" r="4.4"/><line class="idle" x1="83.1" y1="96.9" x2="86.9" y2="93.1"/><circle class="ring" cx="95" cy="95" r="4.4"/><line class="idle" x1="93.1" y1="96.9" x2="96.9" y2="93.1"/><circle class="ring" cx="105" cy="95" r="4.4"/><line class="idle" x1="103.1" y1="96.9" x2="106.9" y2="93.1"/><circle class="ring" cx="5" cy="105" r="4.4"/><line class="idle" x1="3.1" y1="106.9" x2="6.9" y2="103.1"/><circle class="ring" cx="15" cy="105" r="4.4"/><line class="idle" x1="13.1" y1="106.9" x2="16.9" y2="103.1"/><circle class="ring" cx="25" cy="105" r="4.4"/><line class="idle" x1="23.1" y1="106.9" x2="26.9" y2="103.1"/><circle class="ring" cx="35" cy="105" r="4.4"/><line class="idle" x1="33.1" y1="106.9" x2="36.9" y2="103.1"/><circle class="ring" cx="45" cy="105" r="4.4"/><line class="idle" x1="43.1" y1="106.9" x2="46.9" y2="103.1"/><circle class="ring" cx="55" cy="105" r="4.4"/><line class="idle" x1="53.1" y1="106.9" x2="56.9" y2="103.1"/><circle class="ring" cx="65" cy="105" r="4.4"/><line class="idle" x1="63.1" y1="106.9" x2="66.9" y2="103.1"/><circle class="ring" cx="75" cy="105" r="4.4"/><line class="idle" x1="73.1" y1="106.9" x2="76.9" y2="103.1"/><circle class="ring" cx="85" cy="105" r="4.4"/><line class="idle" x1="83.1" y1="106.9" x2="86.9" y2="103.1"/><circle class="ring" cx="95" cy="105" r="4.4"/><line class="idle" x1="93.1" y1="106.9" x2="96.9" y2="103.1"/><circle class="ring" cx="105" cy="105" r="4.4"/><line class="idle" x1="103.1" y1="106.9" x2="106.9" y2="103.1"/><circle class="ring" cx="5" cy="115" r="4.4"/><line class="idle" x1="3.1" y1="116.9" x2="6.9" y2="113.1"/><circle class="ring" cx="15" cy="115" r="4.4"/><line class="idle" x1="13.1" y1="116.9" x2="16.9" y2="113.1"/><circle class="ring" cx="25" cy="115" r="4.4"/><line class="idle" x1="23.1" y1="116.9" x2="26.9" y2="113.1"/><circle class="ring" cx="35" cy="115" r="4.4"/><line class="idle" x1="33.1" y1="116.9" x2="36.9" y2="113.1"/><circle class="ring" cx="45" cy="115" r="4.4"/><line class="idle" x1="43.1" y1="116.9" x2="46.9" y2="113.1"/><circle class="ring" cx="55" cy="115" r="4.4"/><line class="idle" x1="53.1" y1="116.9" x2="56.9" y2="113.1"/><circle class="ring" cx="65" cy="115" r="4.4"/><line class="idle" x1="63.1" y1="116.9" x2="66.9" y2="113.1"/><circle class="ring" cx="75" cy="115" r="4.4"/><line class="idle" x1="73.1" y1="116.9" x2="76.9" y2="113.1"/><circle class="ring" cx="85" cy="115" r="4.4"/><line class="idle" x1="83.1" y1="116.9" x2="86.9" y2="113.1"/><circle class="ring" cx="95" cy="115" r="4.4"/><line class="idle" x1="93.1" y1="116.9" x2="96.9" y2="113.1"/><circle class="ring" cx="105" cy="115" r="4.4"/><line class="idle" x1="103.1" y1="116.9" x2="106.9" y2="113.1"/><circle class="ring" cx="5" cy="125" r="4.4"/><line class="idle" x1="3.1" y1="126.9" x2="6.9" y2="123.1"/><circle class="ring" cx="15" cy="125" r="4.4"/><line class="idle" x1="13.1" y1="126.9" x2="16.9" y2="123.1"/><circle class="ring" cx="25" cy="125" r="4.4"/><line class="idle" x1="23.1" y1="126.9" x2="26.9" y2="123.1"/><circle class="ring" cx="35" cy="125" r="4.4"/><line class="idle" x1="33.1" y1="126.9" x2="36.9" y2="123.1"/><circle class="ring" cx="45" cy="125" r="4.4"/><line class="idle" x1="43.1" y1="126.9" x2="46.9" y2="123.1"/><circle class="ring" cx="55" cy="125" r="4.4"/><line class="idle" x1="53.1" y1="126.9" x2="56.9" y2="123.1"/><circle class="ring" cx="65" cy="125" r="4.4"/><line class="idle" x1="63.1" y1="126.9" x2="66.9" y2="123.1"/><circle class="ring" cx="75" cy="125" r="4.4"/><line class="idle" x1="73.1" y1="126.9" x2="76.9" y2="123.1"/><circle class="ring" cx="85" cy="125" r="4.4"/><line class="idle" x1="83.1" y1="126.9" x2="86.9" y2="123.1"/><circle class="ring" cx="95" cy="125" r="4.4"/><line class="idle" x1="93.1" y1="126.9" x2="96.9" y2="123.1"/><circle class="ring" cx="105" cy="125" r="4.4"/><line class="idle" x1="103.1" y1="126.9" x2="106.9" y2="123.1"/></g></svg></span>
         <span class="door-foot"><span><b>hourfield.vladislove.online</b><small>Скоро в App Store</small></span><span class="pill">Подробнее</span></span>
       </a>
     </div>
@@ -161,5 +169,54 @@ footer a:hover{color:var(--ink)}
     <nav aria-label="Разделы"><a href="https://vladislove.online/">Главная</a><a href="https://wp.vladislove.online">Обои</a><a href="mailto:support@vladislove.online">support@vladislove.online</a></nav>
   </footer>
 </div>
+<script>
+(function(){
+  // Цифры 4×5 клеток — как в самом Hourfield: линии идут через центры часиков
+  var D={
+    0:[[[0,0],[3,0],[3,4],[0,4],[0,0]]],
+    1:[[[1,0],[2,0],[2,4]]],
+    2:[[[0,0],[3,0],[3,2],[0,2],[0,4],[3,4]]],
+    3:[[[0,0],[3,0],[3,4],[0,4]],[[1,2],[3,2]]],
+    4:[[[0,0],[0,3],[2,3]],[[3,0],[3,4]]],
+    5:[[[3,0],[0,0],[0,2],[3,2],[3,4],[0,4]]],
+    6:[[[3,0],[0,0],[0,4],[3,4],[3,2],[0,2]]],
+    7:[[[0,0],[3,0],[3,4]]],
+    8:[[[0,0],[3,0],[3,4],[0,4],[0,0]],[[0,2],[3,2]]],
+    9:[[[2,2],[0,2],[0,0],[3,0],[3,4],[0,4]]]
+  };
+  var COLS=11,ROWS=13,S=10,NS='http://www.w3.org/2000/svg';
+  // позиции цифр: ЧЧ сверху, ММ снизу, рамка из «спящих» часов вокруг
+  var SLOTS=[[1,1],[6,1],[1,7],[6,7]];
+  var g=document.getElementById('hf-field');
+  if(!g) return;
+  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e}
+  function c(x){return x*S+S/2}
+  function draw(digits){
+    while(g.firstChild) g.removeChild(g.firstChild);
+    var used={};
+    var paths=[];
+    digits.forEach(function(d,i){
+      var o=SLOTS[i];
+      D[d].forEach(function(line){
+        var pts=line.map(function(p){return [p[0]+o[0],p[1]+o[1]]});
+        for(var j=1;j<pts.length;j++){
+          var a=pts[j-1],b=pts[j],dx=Math.sign(b[0]-a[0]),dy=Math.sign(b[1]-a[1]),x=a[0],y=a[1];
+          used[x+','+y]=1;
+          while(x!==b[0]||y!==b[1]){x+=dx;y+=dy;used[x+','+y]=1}
+        }
+        paths.push(pts.map(function(p){return c(p[0])+','+c(p[1])}).join(' '));
+      });
+    });
+    for(var y=0;y<ROWS;y++)for(var x=0;x<COLS;x++){
+      g.appendChild(el('circle',{class:'ring',cx:c(x),cy:c(y),r:4.4}));
+      if(!used[x+','+y]) g.appendChild(el('line',{class:'idle',x1:c(x)-1.9,y1:c(y)+1.9,x2:c(x)+1.9,y2:c(y)-1.9}));
+    }
+    paths.forEach(function(p){g.appendChild(el('polyline',{class:'digit',points:p}))});
+  }
+  function now(){var d=new Date(),h=d.getHours(),m=d.getMinutes();return [Math.floor(h/10),h%10,Math.floor(m/10),m%10]}
+  draw(now());               // текущее время; без JS остаётся пустое поле часов
+  setInterval(function(){draw(now())},15000);
+})();
+</script>
 </body>
 </html>
